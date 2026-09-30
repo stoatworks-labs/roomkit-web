@@ -1,0 +1,19 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://intake.stoatworks-labs.com; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The geometry worker, and only it, may evaluate strings: OpenCascade's embind glue
+# builds its bindings with `new Function`, so under the page policy above the CAD
+# kernel dies with an EvalError on the live site while `vite dev` (no headers) works.
+# A worker is governed by the CSP on its own script response, so the page itself
+# keeps the strict policy. The worker has no DOM and only ever sees numbers.
+# /assets/* is cached immutable WITH its headers: changing this policy without a
+# change to the worker's code (so its hash) leaves returning visitors on the old one.
+/assets/worker-*
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval'; connect-src 'self'; object-src 'none'; base-uri 'self'
