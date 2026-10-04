@@ -83,6 +83,10 @@ Cloudflare Worker on a zone route (see `wrangler.toml`).
 embind glue needs `new Function`. Without that rule the live site fails while `vite dev`
 works. `src/lib/headers.test.ts` guards it.
 
+<!-- attributions:start -->
+This project is built on other people's work — see [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
+<!-- attributions:end -->
+
 ## Licence
 
 MIT (see `LICENSE`). The OpenCascade WebAssembly build (`replicad-opencascadejs`) is
