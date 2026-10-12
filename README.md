@@ -2,7 +2,8 @@
 
 > **AI-assisted project.** This codebase was created with [Claude](https://claude.com/claude-code)
 > (Anthropic), directed and reviewed by a human author. None of the designs it makes has been
-> printed and acoustically measured yet: the geometry is checked, the acoustics are textbook models.
+> printed and acoustically measured yet. The geometry is checked, and the acoustics are textbook
+> models.
 
 Design 3D-printable room treatment in the browser and download files ready for the slicer:
 
@@ -13,7 +14,7 @@ Design 3D-printable room treatment in the browser and download files ready for t
 - **Quadratic-residue diffusers**: 2D "skyline" tiles and 1D QRD wells, solid or open-backed
   so you can fill them with plaster or sand.
 
-Live at **https://roomkit.stoatworks-labs.com**. Everything runs in your browser: the CAD
+It's live at **https://roomkit.stoatworks-labs.com**. Everything runs in your browser: the CAD
 kernel is [OpenCascade](https://dev.opencascade.org/) compiled to WebAssembly (via
 [replicad](https://replicad.xyz/)), so nothing you enter or upload leaves the page.
 
@@ -26,15 +27,15 @@ Each part is verified from the **built** solid, not from its parameters:
 
 - OpenCascade validity, and that the part is exactly one solid;
 - it fits your printer bed, and nothing sits below z = 0;
-- its built volume equals the analytic volume (catches a boolean that silently drops
+- its built volume equals the analytic volume (which catches a boolean that silently drops
   material);
 - material/air probes at known points (the neck bore is open, the floor is solid, …);
 - the exported mesh is closed and consistently oriented (every edge shared by exactly two
   triangles, in opposite directions).
 
-For a trap, the tool also reassembles the built tray, lid and neck, measures the air left
-in the cavity, and fails the design if that tunes more than 0.5% off target. A part that
-fails any check isn't offered for download.
+For a trap, the tool also reassembles the built tray, lid and neck, measures the air left in the
+cavity, and fails the design if that tunes more than 0.5% off target. A part that fails any check
+isn't offered for download.
 
 ## The acoustics
 
@@ -50,21 +51,22 @@ fails any check isn't offered for download.
   wavelength wide.
 - **No printed porous absorbers, on purpose.** FDM pores (0.4–2 mm) are 10–100× wider than
   the air's viscous boundary layer (~0.07 mm at 1 kHz), so a printed lattice is mostly
-  transparent. Use mineral wool for broadband absorption.
+  transparent, which is a lot of filament to spend on not absorbing anything. Use mineral wool
+  for broadband absorption.
 
-This is a port of a Python/cadquery generator. `src/lib/fixtures/python-reference.json`
-holds that code's numbers and the tests pin the port to them. Built part volumes were also
-checked against the cadquery STLs (identical to 0.000%).
+This is a port of a Python/cadquery generator. `src/lib/fixtures/python-reference.json` holds
+that code's numbers, and the tests pin the port to them. Built part volumes were also checked
+against the cadquery STLs (identical to 0.000%).
 
 ## Building a trap
 
-1. Print with 4+ perimeters and solid top/bottom. The box must be airtight and stiff.
+1. Print with 4+ perimeters and solid top/bottom. The box has to be airtight and stiff.
 2. Seal the inside with paint or thin epoxy. Silicone or glue the lid on.
 3. Push the neck through the lid from outside.
 4. Optionally, add mineral wool inside, clear of the neck. It widens the absorbed band and
    pulls the tuning a little lower, which the trim margin allows for.
 5. Measure, then trim the inner end of the tube using the trim table.
-6. Place it where the mode's pressure peaks: corners for most modes, the wall–floor junction
+6. Put it where the mode's pressure peaks: corners for most modes, the wall–floor junction
    for height modes.
 
 ## Development
@@ -76,12 +78,12 @@ npm test        # maths vs the Python reference, plus real OpenCascade builds in
 npm run build
 ```
 
-Deployed by `.github/workflows/deploy.yml` on every push to `main`: a static-assets
+It's deployed by `.github/workflows/deploy.yml` on every push to `main`, as a static-assets
 Cloudflare Worker on a zone route (see `wrangler.toml`).
 
-`public/_headers` lets the geometry worker, and only it, evaluate strings: OpenCascade's
-embind glue needs `new Function`. Without that rule the live site fails while `vite dev`
-works. `src/lib/headers.test.ts` guards it.
+`public/_headers` lets the geometry worker, and only that worker, evaluate strings, because
+OpenCascade's embind glue needs `new Function`. Without that rule the live site fails while
+`vite dev` works fine, which is a fun one to track down. `src/lib/headers.test.ts` guards it.
 
 <!-- attributions:start -->
 This project is built on other people's work — see [ATTRIBUTIONS.md](ATTRIBUTIONS.md).
