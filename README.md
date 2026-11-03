@@ -21,6 +21,9 @@ kernel is [OpenCascade](https://dev.opencascade.org/) compiled to WebAssembly (v
 Downloads are **3MF** (opens straight into Bambu Studio, PrusaSlicer, Cura), **STL**, and
 optionally **STEP** for editing in CAD.
 
+Its [page on Stoatworks Labs](https://stoatworks-labs.com/web-tools/roomkit/) says what it does and what to
+check before you trust a design.
+
 ## What it checks before offering a download
 
 Each part is verified from the **built** solid, not from its parameters:

@@ -15,4 +15,4 @@ None of the designs it makes has been printed and acoustically measured yet. The
 
 - [roomkit](https://roomkit.stoatworks-labs.com/): the tool itself
 - [Source on GitHub](https://github.com/stoatworks-labs/roomkit-web) (MIT)
-- [Stoatworks Labs](https://stoatworks-labs.com/)
+- [roomkit on Stoatworks Labs](https://stoatworks-labs.com/web-tools/roomkit/): what it does, what it checks, and what to check before you trust it
