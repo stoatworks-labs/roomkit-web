@@ -3,10 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>roomkit</title>
-    <meta name="description" content="Design 3D-printable Helmholtz bass traps tuned to your room's modes or a REW measurement, and quadratic-residue diffusers. Download STL, 3MF and STEP, built in your browser." />
+    <title>roomkit — Printable bass traps and diffusers, tuned to your room</title>
+    <meta name="description" content="Design 3D-printable Helmholtz bass traps tuned to the modes of your room or a REW measurement, and quadratic-residue diffusers. Free, in your browser: download STL, 3MF and STEP." />
+    <link rel="canonical" href="https://roomkit.stoatworks-labs.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Stoatworks Labs" />
+    <meta property="og:title" content="roomkit — Printable bass traps and diffusers, tuned to your room" />
+    <meta property="og:description" content="Design 3D-printable Helmholtz bass traps tuned to the modes of your room or a REW measurement, and quadratic-residue diffusers. Free, in your browser: download STL, 3MF and STEP." />
+    <meta property="og:url" content="https://roomkit.stoatworks-labs.com/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "@id": "https://roomkit.stoatworks-labs.com#app",
+        "name": "roomkit",
+        "url": "https://roomkit.stoatworks-labs.com",
+        "description": "Design 3D-printable Helmholtz bass traps tuned to the modes of your room or a REW measurement, and quadratic-residue diffusers. Free, in your browser: download STL, 3MF and STEP.",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any (runs in a web browser)",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "author": {
+          "@id": "https://stoatworks-labs.com/#organization",
+          "@type": "Organization",
+          "name": "Stoatworks Labs",
+          "url": "https://stoatworks-labs.com/"
+        },
+        "publisher": {
+          "@id": "https://stoatworks-labs.com/#organization"
+        },
+        "sameAs": [
+          "https://github.com/stoatworks-labs/roomkit-web"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <h1>roomkit</h1>
+      <p>Design 3D-printable room treatment in the browser and download files ready for the slicer: Helmholtz bass traps tuned to a frequency you type, to the peaks in a REW measurement, or to your room's axial modes, and quadratic-residue diffusers, 2D "skyline" tiles and 1D QRD wells.</p>
+      <p>Everything runs in your browser, and it needs JavaScript: the CAD kernel is OpenCascade compiled to WebAssembly, so nothing you enter or upload leaves the page. Downloads are 3MF, STL and optionally STEP. None of the designs it makes has been printed and acoustically measured yet.</p>
+      <p><a href="https://github.com/stoatworks-labs/roomkit-web">Source on GitHub</a> · <a href="https://stoatworks-labs.com/">Stoatworks Labs</a></p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <!--

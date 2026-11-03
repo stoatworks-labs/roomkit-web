@@ -1,0 +1,18 @@
+# roomkit
+
+> Printable bass traps and diffusers, tuned to your room
+
+Design 3D-printable room treatment in the browser and download files ready for the slicer:
+
+- Helmholtz bass traps tuned to a frequency you type, to the peaks in a REW measurement, or to your room's axial modes. Each trap is three prints (tray, lid, push-in neck). The neck is printed long, with a trim table for tuning it after you measure.
+- Quadratic-residue diffusers: 2D "skyline" tiles and 1D QRD wells, solid or open-backed so you can fill them with plaster or sand.
+
+Everything runs in the browser: the CAD kernel is OpenCascade compiled to WebAssembly (via replicad), so nothing you enter or upload leaves the page. Downloads are 3MF, STL, and optionally STEP for editing in CAD. Each part is checked from the built solid before it's offered for download.
+
+None of the designs it makes has been printed and acoustically measured yet. The geometry is checked, and the acoustics are textbook models.
+
+## Links
+
+- [roomkit](https://roomkit.stoatworks-labs.com/): the tool itself
+- [Source on GitHub](https://github.com/stoatworks-labs/roomkit-web) (MIT)
+- [Stoatworks Labs](https://stoatworks-labs.com/)
