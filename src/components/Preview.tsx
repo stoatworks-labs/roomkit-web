@@ -23,14 +23,15 @@ export function Preview({ parts, gap = 10 }: { parts: PreviewPart[]; gap?: numbe
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     el.appendChild(renderer.domElement)
     const scene = new THREE.Scene()
-    scene.background = color('--surface', '#fcfcfb')
+    // A viewport sits on the theme's stage, dark in both modes, so none of these change with the page's mode.
+    scene.background = color('--sw-stage', '#060e16')
     THREE.Object3D.DEFAULT_UP.set(0, 0, 1)
     const camera = new THREE.PerspectiveCamera(35, 1, 1, 20000)
     camera.up.set(0, 0, 1)
 
     const group = new THREE.Group()
     let x = 0
-    const accent = color('--accent', '#2a78d6')
+    const accent = color('--sw-accent-soft', '#7fa8ce')
     for (const p of parts) {
       const g = new THREE.BufferGeometry()
       g.setAttribute('position', new THREE.BufferAttribute(p.positions, 3))
@@ -43,7 +44,7 @@ export function Preview({ parts, gap = 10 }: { parts: PreviewPart[]; gap?: numbe
       flat.computeVertexNormals()
       const mesh = new THREE.Mesh(flat, new THREE.MeshStandardMaterial({ color: accent, roughness: 0.6, metalness: 0.05, flatShading: true }))
       group.add(mesh)
-      const edges = new THREE.LineSegments(new THREE.EdgesGeometry(g, 30), new THREE.LineBasicMaterial({ color: color('--text', '#0b0b0b'), transparent: true, opacity: 0.25 }))
+      const edges = new THREE.LineSegments(new THREE.EdgesGeometry(g, 30), new THREE.LineBasicMaterial({ color: color('--sw-stage-ink', '#e6edf3'), transparent: true, opacity: 0.25 }))
       group.add(edges)
       x += bb.max.x - bb.min.x + gap
     }
@@ -51,7 +52,7 @@ export function Preview({ parts, gap = 10 }: { parts: PreviewPart[]; gap?: numbe
     const box = new THREE.Box3().setFromObject(group)
     const size = box.getSize(new THREE.Vector3())
     const centre = box.getCenter(new THREE.Vector3())
-    const grid = new THREE.GridHelper(Math.max(size.x, size.y) * 1.4, 14, color('--plane', '#8a8984'), color('--grid', '#ecebe7'))
+    const grid = new THREE.GridHelper(Math.max(size.x, size.y) * 1.4, 14, color('--sw-faint', '#74879a'), color('--sw-stage-line', '#233546'))
     grid.rotateX(Math.PI / 2)
     grid.position.set(centre.x, centre.y, -0.1)
     scene.add(grid)

@@ -25,9 +25,11 @@ export function App() {
 
   return (
     <div className="app">
-      <header className="top">
+      <header className="sw-bar top">
         <div className="brand">
-          <h1>roomkit</h1>
+          <h1 className="sw-brand">
+            <span className="sw-mark" aria-hidden="true">⌂</span> roomkit
+          </h1>
           <span className="preview">preview</span>
           <span className="tag">Printable bass traps and diffusers, tuned to your room</span>
         </div>
@@ -35,7 +37,7 @@ export function App() {
           <span className="small muted engine" title="OpenCascade geometry kernel, running in your browser">
             {engine == null ? 'Loading CAD kernel…' : 'CAD kernel ready'}
           </span>
-          <button className="btn ghost" data-stoatworks-about type="button">About</button>
+          <button className="btn" data-stoatworks-about type="button">About</button>
         </div>
       </header>
 
